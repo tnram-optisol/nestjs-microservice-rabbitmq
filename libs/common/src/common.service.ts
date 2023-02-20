@@ -20,7 +20,7 @@ export class CommonService {
       case '403':
         throw new RpcException({
           message: data,
-          status: HttpStatus.BAD_REQUEST,
+          status: HttpStatus.UNAUTHORIZED,
         });
       default:
         throw new RpcException({

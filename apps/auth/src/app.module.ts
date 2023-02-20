@@ -19,18 +19,7 @@ import { config } from './ormconfig';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      url: 'mongodb://localhost:27017',
-      database: 'nestjs-mongo-sample',
-      entities: [User, Role],
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      migrationsRun: true,
-      migrationsTableName: 'mongo_migrations',
-      migrations: [__dirname + '/apps/auth/src/database/migrations/*.ts'],
-      synchronize: false,
-    }),
+    TypeOrmModule.forRoot(config),
     RbmqModule,
     ConfigModule.forRoot({
       isGlobal: true,
