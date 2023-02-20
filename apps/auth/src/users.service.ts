@@ -30,7 +30,14 @@ export class UsersService {
       userData.password,
     );
     userData.password = hashedPassword;
-    return this.userRepo.save(userData);
+
+    return this.userRepo.insertOne({
+      ...userData,
+      password: hashedPassword,
+      role: await this.roleRepo.findOne({
+        where: { role_name: userData.roleName },
+      }),
+    });
   }
   async getUser(username: string) {
     return this.userRepo.findOne({

@@ -7,26 +7,14 @@ export class UsersController {
   constructor(private userService: UserService) {}
   @Get('profile')
   async user(@Query('email') email: string) {
-    try {
-      return this.userService.getUser(email);
-    } catch (error) {
-      throw error;
-    }
+    return this.userService.getUser(email);
   }
   @Get('roles')
   async roles() {
-    try {
-      return this.userService.getRoles();
-    } catch (error) {
-      throw error;
-    }
+    return this.userService.getRoles();
   }
   @Post('register')
   async register(@Body() userData: CreateUserDto) {
-    try {
-      return this.userService.registerUser(userData);
-    } catch (error) {
-      throw error;
-    }
+    return this.userService.registerUser(userData);
   }
 }

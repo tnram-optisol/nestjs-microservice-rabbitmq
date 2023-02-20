@@ -19,6 +19,9 @@ export class CreateUserDto {
   @MinLength(8, { message: 'Password must be required and valid' })
   password: string;
 
+  @IsNotEmpty({ message: 'RoleName must be required and valid' })
+  roleName: string;
+
   profilePic?: string;
   createdAt: Date;
   updatedAt: Date;
